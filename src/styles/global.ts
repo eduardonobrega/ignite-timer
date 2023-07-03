@@ -39,4 +39,11 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme['gray-900']};
     color: ${({ theme }) => theme['gray-100']};
   }
+
+
+  @media (max-width: 768px) {
+  :root {
+    font-size: 50%;
+  }
+}
 `
