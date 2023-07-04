@@ -40,6 +40,12 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme['gray-100']};
   }
 
+  #root {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
 
   @media (max-width: 768px) {
   :root {
