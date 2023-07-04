@@ -9,6 +9,16 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-shadow: 0 0 0 2px ${({ theme }) => theme['green-500']};
   }
+  ::-webkit-scrollbar {
+  width: .8rem;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: .8rem;
+    background-color: ${({ theme }) => theme['gray-600']};
+  }
 
   *, *::before, *::after {
       box-sizing: border-box;
