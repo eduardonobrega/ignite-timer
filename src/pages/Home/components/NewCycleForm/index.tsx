@@ -2,7 +2,7 @@ import { MinutesAmountInput, FormContainer, TaskInput } from './styles'
 
 export function NewCycleForm() {
   return (
-    <FormContainer>
+    <FormContainer id="newCycleForm">
       <label htmlFor="task">Vou trabalhar em</label>
       <TaskInput
         placeholder="Dê um nome para o seu projeto"
