@@ -26,6 +26,9 @@ const Button = styled.button`
     opacity: 0.6;
     cursor: not-allowed;
   }
+  &:focus-visible {
+    box-shadow: none;
+  }
 
   > svg {
     width: 2.4rem;
@@ -36,7 +39,8 @@ const Button = styled.button`
 export const StartButton = styled(Button)`
   background-color: ${({ theme }) => theme['green-500']};
 
-  &:not(:disabled):hover {
+  &:not(:disabled):hover,
+  &:focus-visible {
     background-color: ${({ theme }) => theme['green-700']};
   }
 `
@@ -44,7 +48,8 @@ export const StartButton = styled(Button)`
 export const InterruptButton = styled(Button)`
   background-color: ${({ theme }) => theme['red-500']};
 
-  &:not(:disabled):hover {
+  &:not(:disabled):hover,
+  &:focus-visible {
     background-color: ${({ theme }) => theme['red-700']};
   }
 `
