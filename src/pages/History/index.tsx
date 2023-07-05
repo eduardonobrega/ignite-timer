@@ -1,6 +1,10 @@
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import { useCycleContext } from '../../context/CyclesContext'
 import { HistoryContainer, Status, TableWrapping } from './styles'
 
 export function History() {
+  const { cycles } = useCycleContext()
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
@@ -16,30 +20,29 @@ export function History() {
             </tr>
           </thead>
           <tbody className="tbody">
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <Status statusColor="red">Em andamento</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <Status statusColor="green">Em andamento</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Conserto de débitos técnicos </td>
-              <td>25 minutos</td>
-              <td>Há cerca de 2 meses</td>
-              <td>
-                <Status statusColor="yellow">Em andamento</Status>
-              </td>
-            </tr>
+            {cycles.map((cycle) => (
+              <tr key={cycle.id}>
+                <td>{cycle.task}</td>
+                <td>{cycle.minutesAmount} minutos</td>
+                <td>
+                  {formatDistanceToNow(cycle.startDate, {
+                    addSuffix: true,
+                    locale: ptBR,
+                  })}
+                </td>
+                <td>
+                  {cycle.interruptDate && (
+                    <Status statusColor="red">Interrompido</Status>
+                  )}
+                  {cycle.finishedDate && (
+                    <Status statusColor="green">Concluído</Status>
+                  )}
+                  {!cycle.finishedDate && !cycle.interruptDate && (
+                    <Status statusColor="yellow">Em andamento</Status>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </TableWrapping>
