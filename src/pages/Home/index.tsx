@@ -37,6 +37,7 @@ export function Home() {
   function handleInterruptCycle() {
     interruptCycle()
     reset()
+    document.title = 'Ignite Timer'
   }
 
   return (
